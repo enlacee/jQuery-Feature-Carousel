@@ -157,12 +157,14 @@
         console.log('wH', wH)
         console.log('wW', wW)
         if (wW >= 1280) {
-            pluginData.largeFeatureWidth = $firstFeatureImage.width() * options.largeFeatureWidth;
+            /*pluginData.largeFeatureWidth = $firstFeatureImage.width() * options.largeFeatureWidth;
             pluginData.largeFeatureHeight = $firstFeatureImage.height() * options.largeFeatureHeight;
-            
+          */  
         } else {
+          /*
             pluginData.smallFeatureWidth = $firstFeatureImage.width() * options.smallFeatureWidth;
             pluginData.smallFeatureWidth = $firstFeatureImage.height() * 0.5;
+            */
         }
     //
 
