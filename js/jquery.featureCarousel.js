@@ -151,6 +151,22 @@
         pluginData.smallFeatureHeight = $firstFeatureImage.outerHeight() / 2;
     }
 
+    //
+        var wW = $(window).width(), wH = $(window).height();
+
+        console.log('wH', wH)
+        console.log('wW', wW)
+        if (wW >= 1280) {
+            pluginData.largeFeatureWidth = $firstFeatureImage.width() * options.largeFeatureWidth;
+            pluginData.largeFeatureHeight = $firstFeatureImage.height() * options.largeFeatureHeight;
+            
+        } else {
+            pluginData.smallFeatureWidth = $firstFeatureImage.width() * options.smallFeatureWidth;
+            pluginData.smallFeatureWidth = $firstFeatureImage.height() * 0.5;
+        }
+    //
+
+
     /**
      * Function to take care of setting up various aspects of the carousel,
      * most importantly the default positions for the features
@@ -656,6 +672,39 @@
       }
 
     });
+
+    // 
+    // EXTRA
+    var moveWindow = function () {
+      /*
+      var wW, wH;
+      // Grab the first image for reference
+      var $firstFeatureImage = $(pluginData.containerIDTag).find(".carousel-image:first");
+
+      $(window).on("resize", function() {
+        wW = $(window).width(), wH = $(window).height();
+
+        console.log('wH', wH)
+        console.log('wW', wW)
+        if (wW >= 1280) {
+            //$(pluginData.containerIDTag).find(".carousel-image").css('width', '50%');
+        } else {
+            //$(pluginData.containerIDTag).find(".carousel-image").css('width', '20%');
+            pluginData.largeFeatureHeight = $firstFeatureImage.height() * 0.9;
+            console.log('pluginData.largeFeatureHeight', pluginData.largeFeatureHeight);
+            console.log('$firstFeatureImage.height()', $firstFeatureImage.height())
+
+            pluginData.largeFeatureWidth = '300px'
+            pluginData.largeFeatureHeight = '300px'
+            pluginData.smallFeatureWidth = $firstFeatureImage.width() * 0.5;
+            pluginData.smallFeatureHeight = $firstFeatureImage.height() * 0.5;
+
+        }
+
+      }).trigger("resize");
+      */
+    };
+
     
     /****************
      PUBLIC FUNCTIONS 
@@ -669,6 +718,7 @@
         setupFeaturePositions();
         setupTrackers();
         initiateMove(true,1);
+        moveWindow();
       });
  
       return this;
@@ -686,7 +736,8 @@
     this.start = function () {
       setTimer(false);
     }
-   
+
+
     // Initialize the plugin
     return this.initialize();
   };
@@ -695,10 +746,10 @@
     // If zero, take original width and height of image
     // If between 0 and 1, multiply by original width and height (acts as a percentage)
     // If greater than one, use as a forced width/height for all of the images
-    largeFeatureWidth :   0,
-    largeFeatureHeight:		0,
-    smallFeatureWidth:    .5,
-    smallFeatureHeight:		.5,
+    largeFeatureWidth :   .95,
+    largeFeatureHeight:		.95,
+    smallFeatureWidth:    .75,
+    smallFeatureHeight:		.75,
     // how much to pad the top of the carousel
     topPadding:           20,
     // spacing between the sides of the container
@@ -721,10 +772,10 @@
     // numbered blips can appear and be used to track the currently centered feature, as well as 
     // allow the user to click a number to move to that feature. Set to false to not process these at all
     // and true to process and display them
-    trackerIndividual:    true,
+    trackerIndividual:    false,
     // a summation of the features can also be used to display an "x Of y" style of tracking
     // this can be combined with the above option as well
-    trackerSummation:     true,
+    trackerSummation:     false,
     // true to preload all images in the carousel before displaying anything. If this is set to false,
     // you will probably need to set a fixed width/height to prevent strangeness
     preload:              true,
@@ -746,5 +797,6 @@
     // callback function for when center feature was clicked
     clickedCenter:        $.noop
   };
+
   
 })(jQuery);
