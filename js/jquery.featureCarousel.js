@@ -178,12 +178,14 @@
         // Have to make the container relative positioning
         .find(".carousel-feature").each(function () {
           // Center all the features in the middle and hide them
+          console.log('leftttt : ',(pluginData.containerWidth / 2) - (pluginData.smallFeatureWidth / 2) - (pluginData.borderWidth / 2))
           $(this).css({
             'left': (pluginData.containerWidth / 2) - (pluginData.smallFeatureWidth / 2) - (pluginData.borderWidth / 2),
             'width': pluginData.smallFeatureWidth,
             'height': pluginData.smallFeatureHeight,
             'top': options.smallFeatureOffset + options.topPadding,
-            'opacity': 0
+            'opacity': 0,
+            'border': '1px solid red'
           });
         })
         // Set all the images to small feature size
